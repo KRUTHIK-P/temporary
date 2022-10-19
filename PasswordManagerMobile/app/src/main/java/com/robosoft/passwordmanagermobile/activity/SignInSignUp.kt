@@ -9,7 +9,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.robosoft.fragmentlifecycle.Communicator
 import com.robosoft.passwordmanagermobile.R
-import com.robosoft.passwordmanagermobile.fragments.SignIn
 import com.robosoft.viewpagersample.adapter.ViewPagerAdapter
 
 class SignInSignUp : AppCompatActivity(), Communicator {
@@ -38,6 +37,7 @@ class SignInSignUp : AppCompatActivity(), Communicator {
 
     override fun passControl() {
         findViewById<ViewPager2>(R.id.viewPager2).setCurrentItem(0,true)
+
     }
 
     override fun passSignInControl() {

@@ -2,17 +2,14 @@ package com.robosoft.passwordmanagermobile.fragments
 
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.robosoft.fragmentlifecycle.Communicator
 import com.robosoft.passwordmanagermobile.R
 import com.robosoft.passwordmanagermobile.databinding.FragmentSignInBinding
-import com.robosoft.passwordmanagermobile.databinding.FragmentSignUpBinding
 import com.robosoft.passwordmanagermobile.db.UserDB
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -84,8 +81,8 @@ class SignIn : Fragment() {
 
                 for (index in 0 until size - 1) {
                     if (mobileNumber == usersList[index].phoneNumber) {
+                        signInFlag = true
                         if (mPin == usersList[index].mPin){
-                            signInFlag = true
                             val communicator = activity as Communicator
                             communicator.passSignInControl()
                         }

@@ -6,8 +6,10 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.robosoft.fragmentlifecycle.Communicator
 import com.robosoft.passwordmanagermobile.R
 import com.robosoft.passwordmanagermobile.databinding.FragmentSignUpBinding
@@ -48,14 +50,18 @@ class SignUp : Fragment() {
         }
 
         signUpBinding.signInBn.setOnClickListener {
+            //checkUser()
             writeData()
         }
 
         return signUpBinding.root
     }
 
+
     @OptIn(DelicateCoroutinesApi::class)
     private fun writeData() {
+
+        var userExists = false
 
         var mobileNumberEditTextFlag = false
         val mobileNumberEditText = signUpBinding.mobileNumberEt
@@ -65,38 +71,57 @@ class SignUp : Fragment() {
             mobileNumberEditText.error = "Invalid Mobile Number"
         } else mobileNumberEditTextFlag = true
 
+        GlobalScope.launch(Dispatchers.IO) {
 
-        var mPinEditTextFlag = false
-        val mPinEditText = signUpBinding.mPinEt
-        val mPin = mPinEditText.text.toString()
+            userDB = UserDB.getDatabase(signUpBinding.root.context)
+            val usersList = userDB.userDao().getAll()
+            val size = usersList.size
 
-        if (!validateMPin(mPin)) {
-            mPinEditText.error = "MPin should be 4 digits"
-        } else mPinEditTextFlag = true
-
-
-        var reEnterMPinEditTextFlag = false
-        val reEnterMPinEditText = signUpBinding.reEnterMPinEt
-        val reEnterMPin = reEnterMPinEditText.text.toString()
-
-        if (mPin != reEnterMPin)
-            reEnterMPinEditText.error = "Should be same as above MPin"
-        else reEnterMPinEditTextFlag = true
-
-        if (mobileNumberEditTextFlag and mPinEditTextFlag and reEnterMPinEditTextFlag) {
-            val user = User(null, mobileNumber, mPin)
-
-            GlobalScope.launch(Dispatchers.IO) {
-
-                userDB = UserDB.getDatabase(signUpBinding.root.context)
-                userDB.userDao().insert(user)
+            for (index in 0 until size - 1) {
+                if (mobileNumber == usersList[index].phoneNumber) {
+                    userExists = true
+                    break
+                }
             }
 
+        }
 
-            val communicator = activity as Communicator
-            communicator.passControl()
+
+        if (!userExists) {
+            var mPinEditTextFlag = false
+            val mPinEditText = signUpBinding.mPinEt
+            val mPin = mPinEditText.text.toString()
+
+            if (!validateMPin(mPin)) {
+                mPinEditText.error = "MPin should be 4 digits"
+            } else mPinEditTextFlag = true
+
+
+            var reEnterMPinEditTextFlag = false
+            val reEnterMPinEditText = signUpBinding.reEnterMPinEt
+            val reEnterMPin = reEnterMPinEditText.text.toString()
+
+            if (mPin != reEnterMPin)
+                reEnterMPinEditText.error = "Should be same as above MPin"
+            else reEnterMPinEditTextFlag = true
+
+            if (mobileNumberEditTextFlag and mPinEditTextFlag and reEnterMPinEditTextFlag) {
+                val user = User(null, mobileNumber, mPin)
+
+                GlobalScope.launch(Dispatchers.IO) {
+
+                    userDB = UserDB.getDatabase(signUpBinding.root.context)
+                    userDB.userDao().insert(user)
+                }
+
+                Toast.makeText(signUpBinding.root.context, "Congrats!!! Success \nSignin to access the vault", Toast.LENGTH_SHORT).show()
+
+            }
 
         }
+
+        val communicator = activity as Communicator
+        communicator.passControl()
     }
 
     private fun validateMPin(mPin: String): Boolean {
