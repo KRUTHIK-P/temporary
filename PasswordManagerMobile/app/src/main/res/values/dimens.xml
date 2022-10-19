@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splashScreen_iv_width">176dp</dimen>
+    <dimen name="splashScreen_iv_height">204dp</dimen>
+    <dimen name="splashScreen_iv_start_end_margin">92dp</dimen>
+    <dimen name="splashScreen_iv_top_bottom_margin">218dp</dimen>
+</resources>
