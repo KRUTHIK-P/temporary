@@ -18,4 +18,13 @@
     <string name="www_instagram_com">www.instagram.com</string>
     <string name="www_pinterest_com">www.pinterest.com</string>
     <string name="type_keywords_to_search">Type keywords to search</string>
+    <string name="add_site">Add Site</string>
+    <string name="url">URL</string>
+    <string name="site_name">Site Name</string>
+    <string name="sector_folder">Sector/Folder</string>
+    <string name="user_name">User Name</string>
+    <string name="site_password">Site Password</string>
+    <string name="notes">Notes</string>
+    <string name="reset">Reset</string>
+    <string name="save">Save</string>
 </resources>

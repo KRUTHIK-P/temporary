@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
+    android:background="@color/FAFAFA"
     tools:context=".activity.HomeScreen">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="@dimen/d56dp"
         android:background="@color/splashScreenBackground">
 
         <LinearLayout
@@ -20,18 +20,18 @@
 
             <ImageView
                 android:id="@+id/burger_iv"
-                android:layout_width="18dp"
-                android:layout_height="16dp"
+                android:layout_width="@dimen/d18dp"
+                android:layout_height="@dimen/d16dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="21dp"
+                android:layout_marginStart="@dimen/d21dp"
                 android:src="@drawable/burger_menu" />
 
             <ImageView
                 android:id="@+id/passmanager_iv"
-                android:layout_width="87dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="13dp"
+                android:layout_width="@dimen/d87dp"
+                android:layout_height="@dimen/d32dp"
+                android:layout_marginStart="@dimen/d19dp"
+                android:layout_marginTop="@dimen/d13dp"
                 android:src="@drawable/pass_manager" />
         </LinearLayout>
 
@@ -43,45 +43,53 @@
 
             <ImageView
                 android:id="@+id/search_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="@dimen/d22dp"
+                android:layout_height="@dimen/d22dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="33dp"
+                android:layout_marginStart="@dimen/d33dp"
                 android:src="@drawable/search" />
 
             <ImageView
                 android:id="@+id/sync_iv"
-                android:layout_width="29.7dp"
-                android:layout_height="22dp"
+                android:layout_width="@dimen/d29_7dp"
+                android:layout_height="@dimen/d22dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="33dp"
-                android:layout_marginEnd="34dp"
+                android:layout_marginStart="@dimen/d33dp"
+                android:layout_marginEnd="@dimen/d34dp"
                 android:src="@drawable/sync_icn" />
 
             <ImageView
                 android:id="@+id/profile_iv"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="@dimen/d22dp"
+                android:layout_height="@dimen/d22dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="19dp"
+                android:layout_marginEnd="@dimen/d19dp"
                 android:src="@drawable/profile" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="56dp"
-        android:orientation="horizontal">
+        android:layout_height="@dimen/d56dp"
+        android:layout_marginTop="@dimen/d56dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/d20dp"
+        android:background="@color/white"
+        android:visibility="gone">
 
         <EditText
-            android:layout_width="0dp"
+            android:layout_width="@dimen/d0dp"
             android:layout_height="match_parent"
             android:hint="@string/type_keywords_to_search"
-            android:layout_weight="1.75"/>
+            android:layout_weight="1.75"
+            android:paddingStart="@dimen/d10dp"
+            android:background="@color/white"
+            android:textColorHint="@color/B3B3B3"
+            android:backgroundTint="@color/white"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/d0dp"
             android:layout_height="match_parent"
             android:paddingEnd="20.3dp"
             android:layout_gravity="center_vertical"
@@ -103,8 +111,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="wrap_content"

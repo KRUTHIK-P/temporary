@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="splashScreenBackground">#0E85FF</color>
+    <color name="lightgray">#949CA5</color>
+    <color name="skyblue">#0E85FF</color>
+    <color name="light_grey">#F5F7FB</color>
+    <color name="FAFAFA">#FAFAFA</color>
+    <color name="B3B3B3">#B3B3B3</color>
 </resources>

@@ -5,34 +5,45 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.robosoft.passwordmanagermobile.R
 import com.robosoft.passwordmanagermobile.adapter.HomeScreenAdapter
 import com.robosoft.passwordmanagermobile.dataclass.Sites
+import kotlin.system.exitProcess
 
 class HomeScreen : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var siteArrayList: ArrayList<Sites>
-    lateinit var siteImage : Array<Int>
-    lateinit var siteName : Array<String>
-    lateinit var copyImg : Array<Int>
-    lateinit var copyPassword : String
-    lateinit var txtLink : Array<String>
+    lateinit var siteImage: Array<Int>
+    lateinit var siteName: Array<String>
+    lateinit var copyImg: Array<Int>
+    lateinit var copyPassword: String
+    lateinit var txtLink: Array<String>
+
+    var backPressedTime: Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
         displaySites()
 
+        val relativeLayout = findViewById<RelativeLayout>(R.id.relative)
+        val searchBar = findViewById<LinearLayout>(R.id.search_bar)
         val search: ImageView = findViewById(R.id.search_iv)
         search.setOnClickListener {
-
+            if (relativeLayout.visibility == View.VISIBLE) {
+                relativeLayout.visibility = View.INVISIBLE
+                searchBar.visibility = View.VISIBLE
+            }
+            else{
+                relativeLayout.visibility = View.VISIBLE
+                searchBar.visibility = View.INVISIBLE
+            }
         }
 
         val addFloatBtn = findViewById<ImageView>(R.id.addFloatingBtn)

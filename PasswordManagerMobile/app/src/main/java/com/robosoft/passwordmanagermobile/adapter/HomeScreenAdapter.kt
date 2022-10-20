@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.robosoft.fragmentlifecycle.Communicator
 import com.robosoft.passwordmanagermobile.R
 import com.robosoft.passwordmanagermobile.dataclass.Sites
 
@@ -26,6 +27,7 @@ class HomeScreenAdapter(private val siteArrayList: ArrayList<Sites>) : RecyclerV
         holder.copyImg.setImageResource(itemsViewModel.copyImg)
         holder.copyPassword.text = itemsViewModel.copyPassword
         holder.txtLink.text = itemsViewModel.txtLink
+
     }
 
     override fun getItemCount(): Int {
